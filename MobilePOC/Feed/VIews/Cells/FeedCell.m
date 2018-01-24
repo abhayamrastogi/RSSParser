@@ -109,7 +109,6 @@
     
     // Create image view
     _ivImageView = [UIImageView new];
-    [_ivImageView setBackgroundColor:[UIColor lightGrayColor]];
     [_ivImageView setContentMode:UIViewContentModeScaleAspectFill];
     [_ivImageView setClipsToBounds:YES];
     [_vBaseView addSubview:_ivImageView];

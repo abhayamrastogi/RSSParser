@@ -33,10 +33,15 @@
 }
 
 -(NSAttributedString *)descriptionLabelText{
-    return [[NSAttributedString alloc] initWithData:[_feed.feedDescription dataUsingEncoding:NSUTF8StringEncoding]
-                                            options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
-                                                      NSCharacterEncodingDocumentAttribute: @(NSUTF8StringEncoding)}
-                                 documentAttributes:nil error:nil];
+    NSMutableParagraphStyle *paragrahStyle = [[NSMutableParagraphStyle alloc] init];
+    [paragrahStyle setLineBreakMode:NSLineBreakByTruncatingTail];
+    NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithData:[_feed.feedDescription dataUsingEncoding:NSUTF8StringEncoding]
+                                                                                        options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
+                                                                                                  NSCharacterEncodingDocumentAttribute: @(NSUTF8StringEncoding)}
+                                                                             documentAttributes:nil error:nil];
+    
+    [attributedText addAttribute:NSParagraphStyleAttributeName value:paragrahStyle range:NSMakeRange(0, [attributedText length])];
+    return attributedText;
 }
 
 -(NSString *)dateLabelText{
