@@ -42,7 +42,7 @@
 // -------------------------------------------------------------------------------
 -(void)fetchFeeds{
     
-    [[APIManager sharedManager] fetchXMLResourceWithName:@"rss" :^(NSArray * _Nullable feeds, NSError * _Nullable error) {
+    [[APIManager sharedManager] fetchRSSFeeds:^(NSArray * _Nullable feeds, NSError * _Nullable error) {
         
         if (!feeds){
             [_delegate feedViewModel:self didFailWithNetworkError:error];

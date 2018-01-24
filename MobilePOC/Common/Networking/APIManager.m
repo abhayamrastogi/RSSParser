@@ -33,6 +33,7 @@ static APIManager *_sharedManager = nil;
     return [[Reachability reachabilityForInternetConnection] currentReachabilityStatus];
 }
 
+//Temporary work. while api is not working.
 -(void)fetchXMLResourceWithName:(NSString *)name :(APIManagerDataHandler)completion{
     
     if ([self isNetworkAvailable] == NotReachable) {
@@ -127,7 +128,7 @@ static APIManager *_sharedManager = nil;
         self.parser.errorHandler = ^(NSError *error) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                completion(nil, error);
+                [weakSelf fetchXMLResourceWithName:@"rss" :completion];//Need to be removed when api will work properly. Temp work
             });
         };
         

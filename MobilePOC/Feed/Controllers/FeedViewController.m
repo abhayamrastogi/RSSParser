@@ -119,6 +119,7 @@
 -(void)configureRefreshControl{
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchFeeds) forControlEvents:UIControlEventValueChanged];
+    [self.collectionView addSubview:_refreshControl];
 }
 
 -(void)refresh{
